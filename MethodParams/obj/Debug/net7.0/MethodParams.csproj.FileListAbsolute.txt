@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/bin/Debug/net7.0/MethodParams
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/bin/Debug/net7.0/MethodParams.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/bin/Debug/net7.0/MethodParams.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/bin/Debug/net7.0/MethodParams.dll
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/bin/Debug/net7.0/MethodParams.pdb
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.dll
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/refint/MethodParams.dll
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.pdb
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/MethodParams.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/MethodParams/obj/Debug/net7.0/ref/MethodParams.dll

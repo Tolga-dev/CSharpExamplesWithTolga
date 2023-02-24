@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{1AC25EAC-918C-4963-A5E8-8B5AA74C646F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MethodParams", "MethodParams\MethodParams.csproj", "{ADC8B75A-27C5-4786-8447-34C5281EB250}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AC25EAC-918C-4963-A5E8-8B5AA74C646F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AC25EAC-918C-4963-A5E8-8B5AA74C646F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AC25EAC-918C-4963-A5E8-8B5AA74C646F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AC25EAC-918C-4963-A5E8-8B5AA74C646F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC8B75A-27C5-4786-8447-34C5281EB250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC8B75A-27C5-4786-8447-34C5281EB250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC8B75A-27C5-4786-8447-34C5281EB250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC8B75A-27C5-4786-8447-34C5281EB250}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
