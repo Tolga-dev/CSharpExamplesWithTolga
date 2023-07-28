@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/Statements/bin/Debug/net7.0/Statements
+/home/xamblot/RiderProjects/CsharpPractice/Statements/bin/Debug/net7.0/Statements.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/Statements/bin/Debug/net7.0/Statements.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/Statements/bin/Debug/net7.0/Statements.dll
+/home/xamblot/RiderProjects/CsharpPractice/Statements/bin/Debug/net7.0/Statements.pdb
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.dll
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/refint/Statements.dll
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.pdb
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/Statements.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/Statements/obj/Debug/net7.0/ref/Statements.dll

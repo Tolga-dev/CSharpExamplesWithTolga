@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/bin/Debug/net7.0/SpecialChars
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/bin/Debug/net7.0/SpecialChars.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/bin/Debug/net7.0/SpecialChars.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/bin/Debug/net7.0/SpecialChars.dll
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/bin/Debug/net7.0/SpecialChars.pdb
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.dll
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/refint/SpecialChars.dll
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.pdb
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/SpecialChars.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/SpecialChars/obj/Debug/net7.0/ref/SpecialChars.dll

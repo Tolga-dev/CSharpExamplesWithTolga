@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/Query/bin/Debug/net7.0/Query
+/home/xamblot/RiderProjects/CsharpPractice/Query/bin/Debug/net7.0/Query.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/Query/bin/Debug/net7.0/Query.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/Query/bin/Debug/net7.0/Query.dll
+/home/xamblot/RiderProjects/CsharpPractice/Query/bin/Debug/net7.0/Query.pdb
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.dll
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/refint/Query.dll
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.pdb
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/Query.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/Query/obj/Debug/net7.0/ref/Query.dll

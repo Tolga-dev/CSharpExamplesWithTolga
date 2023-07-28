@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/bin/Debug/net7.0/ContextualKeyword
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/bin/Debug/net7.0/ContextualKeyword.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/bin/Debug/net7.0/ContextualKeyword.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/bin/Debug/net7.0/ContextualKeyword.dll
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/bin/Debug/net7.0/ContextualKeyword.pdb
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.dll
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/refint/ContextualKeyword.dll
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.pdb
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ContextualKeyword.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/ContextualKeyword/obj/Debug/net7.0/ref/ContextualKeyword.dll

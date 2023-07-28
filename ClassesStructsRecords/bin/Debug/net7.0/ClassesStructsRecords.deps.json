@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "ClassesStructsRecords/1.0.0": {
+        "runtime": {
+          "ClassesStructsRecords.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClassesStructsRecords/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

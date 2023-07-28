@@ -1,0 +1,15 @@
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/bin/Debug/net7.0/ClassesStructsRecords
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/bin/Debug/net7.0/ClassesStructsRecords.deps.json
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/bin/Debug/net7.0/ClassesStructsRecords.runtimeconfig.json
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/bin/Debug/net7.0/ClassesStructsRecords.dll
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/bin/Debug/net7.0/ClassesStructsRecords.pdb
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.csproj.AssemblyReference.cache
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.GeneratedMSBuildEditorConfig.editorconfig
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.AssemblyInfoInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.AssemblyInfo.cs
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.csproj.CoreCompileInputs.cache
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.dll
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/refint/ClassesStructsRecords.dll
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.pdb
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ClassesStructsRecords.genruntimeconfig.cache
+/home/xamblot/RiderProjects/CsharpPractice/ClassesStructsRecords/obj/Debug/net7.0/ref/ClassesStructsRecords.dll
