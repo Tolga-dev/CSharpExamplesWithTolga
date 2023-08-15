@@ -35,11 +35,15 @@ public class Runner
         Interfaces.ex2.Program weather = new Program();
         weather.Runner();
     }
+
+    public void Interface()
+    {
+        var runnerClass = new RunnerClass();
+        runnerClass.Runner();
+    }
     
     private static void Main(string[] args)
     {
-        RunnerClass runnerClass = new RunnerClass();
-        runnerClass.Runner();
         
 
     }

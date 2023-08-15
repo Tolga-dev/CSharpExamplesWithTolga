@@ -2,10 +2,40 @@
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using Delegates.E0;
 using Delegates.E1;
 
 namespace Delegates
 {
+    namespace E0
+    {
+        public class Delegate
+        {
+            private delegate void DelegateFunction(int a);
+
+            private void FooDel(DelegateFunction delegateFunction)
+            {
+                delegateFunction(31);
+            }
+
+            private void Foo(int a)
+            {
+                Console.WriteLine("Foo " + a);                   
+            }
+
+            private void Bar(int b)
+            {
+                Console.WriteLine("BAR " + b);
+            }
+            public void Runner()
+            {
+                FooDel(Foo);
+                FooDel(Bar);
+            }
+            
+        }
+        
+    }
     namespace E1
     {
         public class Delegate
@@ -64,7 +94,6 @@ namespace Delegates
         }
         
     }
-
     namespace E2
     {
 
@@ -86,6 +115,47 @@ namespace Delegates
             }
         }
     }
+    namespace E3
+    {
+        public class PlayerStats
+        {
+            public int kill;
+            public string name= "";
+            public int capturedFlag;
+        }
+
+        public class GameOverState
+        {
+            private delegate int ScoreDel(PlayerStats stats);
+
+            private void GameOver(PlayerStats[] players)
+            {
+                var playerMostKill = GetPlayerNameTopScore(players, stats => stats.kill);
+                var playerMostCapturedFlag = GetPlayerNameTopScore(players, stats => stats.capturedFlag);
+                
+            }
+
+            private string GetPlayerNameTopScore(PlayerStats[] players, ScoreDel scoreDel)
+            {
+                var name = "";
+                var bestScore = 0;
+
+                foreach (var stat in players)
+                {
+                    var score = scoreDel(stat);
+                    if (score <= bestScore) continue;
+                    bestScore = score;
+                    name = stat.name;
+                }
+
+                return name;
+            }
+
+        }
+        
+    }
+    
+    
 }
 
 
@@ -95,9 +165,10 @@ public class Program
     static void Main(string[] args)
     {
         
-        Delegates.E2.Delegate m = new Delegates.E2.Delegate();
-        
-        m.Runner(); 
-        
+//        Delegates.E2.Delegate m = new Delegates.E2.Delegate();
+//        m.Runner();
+        Delegates.E0.Delegate m = new Delegates.E0.Delegate();
+        m.Runner();
+
     }
 }
