@@ -28,6 +28,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassesStructsRecords", "ClassesStructsRecords\ClassesStructsRecords.csproj", "{2C705255-AB49-4A89-9A15-A6806B78226B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Networking", "Networking", "{FEB590D0-7483-462E-B5F6-96ECCAC351B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkPractice", "NetworkPractice\NetworkPractice.csproj", "{CEAECA4D-83AF-4818-8F36-95DFA9100CB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousPractice", "AsynchronousPractice\AsynchronousPractice.csproj", "{D0658AFF-A097-41D9-A9F3-1E420F4F221D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +88,14 @@ Global
 		{2C705255-AB49-4A89-9A15-A6806B78226B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C705255-AB49-4A89-9A15-A6806B78226B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C705255-AB49-4A89-9A15-A6806B78226B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEAECA4D-83AF-4818-8F36-95DFA9100CB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEAECA4D-83AF-4818-8F36-95DFA9100CB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEAECA4D-83AF-4818-8F36-95DFA9100CB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEAECA4D-83AF-4818-8F36-95DFA9100CB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0658AFF-A097-41D9-A9F3-1E420F4F221D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0658AFF-A097-41D9-A9F3-1E420F4F221D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0658AFF-A097-41D9-A9F3-1E420F4F221D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0658AFF-A097-41D9-A9F3-1E420F4F221D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E6CCF6FE-E1E5-4449-B841-FCC99CB50D89} = {A7BF521C-29D0-413E-B200-1B9EE237067A}
