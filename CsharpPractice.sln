@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsynchronousPractice", "Asy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedCsGenerics", "AdvancedCsGenerics\AdvancedCsGenerics.csproj", "{68B5AD17-D5BC-43ED-830B-65923953C904}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TensorFlowDeepMachineLearning", "TensorFlowDeepMachineLearning\TensorFlowDeepMachineLearning.csproj", "{23A923A8-33C3-4AB9-B309-038C5B110C82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{68B5AD17-D5BC-43ED-830B-65923953C904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B5AD17-D5BC-43ED-830B-65923953C904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B5AD17-D5BC-43ED-830B-65923953C904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A923A8-33C3-4AB9-B309-038C5B110C82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A923A8-33C3-4AB9-B309-038C5B110C82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A923A8-33C3-4AB9-B309-038C5B110C82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A923A8-33C3-4AB9-B309-038C5B110C82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E6CCF6FE-E1E5-4449-B841-FCC99CB50D89} = {A7BF521C-29D0-413E-B200-1B9EE237067A}
