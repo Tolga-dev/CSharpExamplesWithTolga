@@ -94,6 +94,7 @@ namespace AsynchronousPractice
 
 namespace RealTimeExample
 {
+    // reading stream example
     internal class Asynchronous1
     {
         static async void ReadFile(string path)
@@ -118,8 +119,6 @@ namespace RealTimeExample
         }
 
     }
-    
-    
 }
 
 
