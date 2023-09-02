@@ -1,17 +1,17 @@
-﻿using System;
-using static Tensorflow.Binding;
+using System.Diagnostics;
 
-namespace TensorFlowNET.Examples
+namespace TensorFlowDeepMachineLearning;
+
+public class Program
 {
-    /// <summary>
-    /// Simple hello world using TensorFlow
-    /// </summary>
-    class Program
+    private static void foo()
     {
-        static void Main(string[] args)
-        {
-            var hello = tf.constant("Hello, TensorFlow!");
-            Console.WriteLine(hello);
-        }
+        Debug.WriteLine("asds");
+    }
+    static int Main()
+    {
+        foo();
+        
+        return 0;
     }
 }
