@@ -1,18 +1,26 @@
-﻿
-using System.Net;
-using System.Text;
-using NetworkPractice;
+using NetworkPractice.E1;
+using NetworkPractice.E2;
 
-public class Program
+namespace NetworkPractice;
+
+public static class Program
 {
-    private static void Socket()
+    private static void Example()
     {
-        var generator = new SocketGenerator();
-        generator.Runner("0.0.0.0",8000); //  python3 -m http.server 8000
+        var e1 = new ProgramE1();
+        e1.Runner();
+    }
+
+    private static void Example2()
+    {
+        
     }
     
     static void Main(string[] args)
     {
-        Socket();
+       // Example();
+       Example2();
+
     }
 }
+ 
