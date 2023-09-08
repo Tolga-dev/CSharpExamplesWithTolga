@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace NetworkInUnity
 {
@@ -6,15 +7,12 @@ namespace NetworkInUnity
     {
         static void Main(string[] args)
         {
-            Console.Title = "Server";
-            
-            
-            
+            TcpServer tcpServer = new TcpServer();
+            tcpServer.Init();
             
             Console.ReadKey();
             
         }
-        
         
         
     }
