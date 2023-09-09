@@ -8,12 +8,16 @@ public enum PacketTypes
     Information = 1,
     ExecutionClient
 }
-
+public enum ClientPacketTypes
+{
+    Information = 1,
+        
+}
 public class TcpServer
 {
     private TcpListener _socket;
 
-    public Clients[] Clients = new Clients[50]; 
+    public static Clients[] Clients = new Clients[50]; 
     public void Init()//
     {
         for (int i = 0; i < Clients.Length; i++)

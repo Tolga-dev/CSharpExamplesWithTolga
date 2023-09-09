@@ -7,6 +7,8 @@ namespace NetworkInUnity
     {
         static void Main(string[] args)
         {
+            ServerHandlePacket.InitializePacket();
+            
             TcpServer tcpServer = new TcpServer();
             tcpServer.Init();
             

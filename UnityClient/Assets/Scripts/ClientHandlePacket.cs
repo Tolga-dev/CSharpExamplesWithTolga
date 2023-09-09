@@ -10,6 +10,12 @@ namespace DefaultNamespace.TcpClients
         Information = 1,
         ExecutionClient,
     }
+
+    public enum ClientPacketTypes
+    {
+        Information = 1,
+        
+    }
     public class ClientHandlePacket : MonoBehaviour
     {
         public static Packet Packet;
@@ -18,7 +24,7 @@ namespace DefaultNamespace.TcpClients
 
         private static Dictionary<long, Packet_> packets;
         private static long _lenght;
-
+        private TcpClients _tcpClients = new TcpClients();
         private void Awake()
         { 
             InitializePacket();
@@ -28,6 +34,7 @@ namespace DefaultNamespace.TcpClients
         {
             packets = new Dictionary<long, Packet_>();
             packets.Add((long)PacketTypes.Information,PacketInformation);
+            packets.Add((long)PacketTypes.ExecutionClient,PacketExecution);
         }
 
 
@@ -110,7 +117,13 @@ namespace DefaultNamespace.TcpClients
             Debug.Log(m2);
             Debug.Log(lvl);
             
+            TcpClients.instance.SendInformation();
             
+        }
+
+        private static void PacketExecution(byte[] data)
+        {
+            Debug.Log("Executed from the server!");
         }
 
     }

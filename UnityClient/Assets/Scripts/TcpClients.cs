@@ -8,6 +8,7 @@ namespace DefaultNamespace.TcpClients
 {
     public class TcpClients: MonoBehaviour
     {
+        public static TcpClients instance;
         
         public TcpClient client;
         public NetworkStream Stream;
@@ -20,7 +21,19 @@ namespace DefaultNamespace.TcpClients
         
         private string IP_ADDRESS = "127.0.0.1";
         private int PORT = 5555;
-        
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(instance);
+            }
+        }
+
         private void Update()
         {
             if (handleData == true)
@@ -110,8 +123,24 @@ namespace DefaultNamespace.TcpClients
             }
             
         }
+        public void SendData(byte[] data)//
+        {
+            Packet packet = new Packet();
+            packet.WriteLong((data.GetUpperBound(0) - data.GetLowerBound(0))+ 1);
+            packet.WriteByte(data);
+            Stream.Write(packet.ToArray(),0,packet.ToArray().Length);
+        }
 
+        public void SendInformation()
+        {
+            Packet packet = new Packet();
+            packet.WriteLong((long)ClientPacketTypes.Information);
+            packet.WriteString("Thanx");
+            SendData(packet.ToArray());
+            Debug.Log("Information is Sent");
+        }
 
+        
 
     }
 }

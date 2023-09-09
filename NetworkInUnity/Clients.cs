@@ -10,7 +10,7 @@ public class Clients
     public NetworkStream Stream;
     private byte[] readBuffer;
     private int bufferSize = 4096;
-    
+    public Packet Packet;
     public void Start()
     {
         socket.SendBufferSize = bufferSize;
@@ -33,7 +33,9 @@ public class Clients
             }
             byte[] bytes = new byte[readBytes];
             Buffer.BlockCopy(readBuffer,0,bytes,0,readBytes);
+            ServerHandlePacket.HandleData(id,bytes);
             Stream.BeginRead(readBuffer, 0, socket.ReceiveBufferSize, ReceivedDataCallBack, null);
+            
         }
         catch (Exception e)
         {
