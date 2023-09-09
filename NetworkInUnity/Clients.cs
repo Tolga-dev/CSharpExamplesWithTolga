@@ -16,7 +16,8 @@ public class Clients
         socket.ReceiveBufferSize = bufferSize;
         Stream = socket.GetStream();
         readBuffer = new byte[bufferSize];
-        Stream.BeginRead(readBuffer, 0, socket.ReceiveBufferSize,ReceivedDataCallBack, null);
+        Stream.BeginRead(readBuffer, 0, readBuffer.Length, ReceivedDataCallBack, null);
+
     }
 
     private void ReceivedDataCallBack(IAsyncResult result)
@@ -24,7 +25,11 @@ public class Clients
         try
         {
             int readBytes = Stream.EndRead(result);
-            if(readBytes <= 0) return;
+            if (readBytes <= 0)
+            {
+                CloseConnection();
+                return;
+            }
             byte[] bytes = new byte[readBytes];
             Buffer.BlockCopy(readBuffer,0,bytes,0,readBytes);
             Stream.BeginRead(readBuffer, 0, socket.ReceiveBufferSize, ReceivedDataCallBack, null);
@@ -32,7 +37,13 @@ public class Clients
         catch (Exception e)
         {
             Console.WriteLine(e);
+            CloseConnection();
             throw;
         }
+    }
+    private void CloseConnection()
+    {
+        Console.WriteLine("{0} got terminated", ip);
+        socket.Close();
     }
 }

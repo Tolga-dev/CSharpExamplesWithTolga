@@ -1,9 +1,11 @@
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
 using System.Text;
+using UnityEngine;
 
-namespace NetworkInUnity;
-
-public class Packet : IDisposable
+namespace DefaultNamespace.TcpClients
+{
+    public class Packet : IDisposable
 {
     public List<byte> Buffer { get; } = new List<byte>(); 
     
@@ -11,7 +13,9 @@ public class Packet : IDisposable
     private int _readPos;
     private bool _buffUpdated;
     
+    
     public int Length() => Buffer.Count - _readPos;
+    
     public void Clear()
     {
         Buffer.Clear();
@@ -24,30 +28,30 @@ public class Packet : IDisposable
     {
         Buffer.AddRange(input);
         _buffUpdated = true;
-    } 
+    }
     
     public void Write<T>(T input)
     {
         switch (Type.GetTypeCode(typeof(T)))
         {
             case TypeCode.Int16: // short
-                Console.WriteLine("Short sent");
+                Console.WriteLine("Short");
                 Buffer.AddRange(BitConverter.GetBytes((short)(object)input!));
                 break;
             case TypeCode.Int32: // integer
-                Console.WriteLine("Int sent");
+                Console.WriteLine("Int");
                 Buffer.AddRange(BitConverter.GetBytes((int)(object)input!));
                 break;
             case TypeCode.Int64: // long
-                Console.WriteLine("long sent");
+                Console.WriteLine("long");
                 Buffer.AddRange(BitConverter.GetBytes((long)(object)input!));
                 break;
             case TypeCode.Single: // float
-                Console.WriteLine("float sent");
+                Console.WriteLine("float");
                 Buffer.AddRange(BitConverter.GetBytes((float)(object)input!));
                 break;
             case TypeCode.String:
-                Console.WriteLine("string sent");
+                Console.WriteLine("string");
                 var chars = (string)(object)input!;
                 Buffer.AddRange(BitConverter.GetBytes(chars.Length));
                 Buffer.AddRange(Encoding.ASCII.GetBytes(chars));
@@ -79,7 +83,7 @@ public class Packet : IDisposable
     }
 
     
-    public T? Read<T>(bool peek = true)
+    public T Read<T>(bool peek = true)
     {
         switch (Type.GetTypeCode(typeof(T)))
         {
@@ -195,4 +199,5 @@ public class Packet : IDisposable
     #endregion
     
     
+}
 }
