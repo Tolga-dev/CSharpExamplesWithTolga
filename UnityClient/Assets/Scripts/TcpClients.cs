@@ -21,15 +21,15 @@ namespace DefaultNamespace.TcpClients
         private string IP_ADDRESS = "127.0.0.1";
         private int PORT = 5555;
         
-        /*private void Update()
+        private void Update()
         {
             if (handleData == true)
             {
-                Debug.Log("Handling Data");
+//                Debug.Log("Handling Data");
                 ClientHandlePacket.HandleData(receivedBytes);
                 handleData = false;
             }
-        }*/
+        }
 
         public void Connect()
         {
@@ -64,11 +64,10 @@ namespace DefaultNamespace.TcpClients
                 }
                 else
                 {
-                    isConnected = true;
                     Debug.Log("Entered!");
+                    isConnected = true;
                     Stream = client.GetStream();
-                    Debug.Log("Reading!");
-                  //  Stream.BeginRead(buffer, 0, 8192, OnReceiveData, null);
+                    Stream.BeginRead(buffer, 0, 8192, OnReceiveData, null);
                 }
             }
             catch (Exception e)
@@ -79,7 +78,7 @@ namespace DefaultNamespace.TcpClients
             }
         }
 
-        private void OnReceiveData(IAsyncResult result)
+        private void OnReceiveData(IAsyncResult result)//
         {   
             try
             {

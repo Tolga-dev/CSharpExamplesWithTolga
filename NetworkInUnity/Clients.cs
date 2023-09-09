@@ -10,6 +10,7 @@ public class Clients
     public NetworkStream Stream;
     private byte[] readBuffer;
     private int bufferSize = 4096;
+    
     public void Start()
     {
         socket.SendBufferSize = bufferSize;

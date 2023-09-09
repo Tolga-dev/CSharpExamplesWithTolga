@@ -12,7 +12,7 @@ namespace DefaultNamespace.TcpClients
     }
     public class ClientHandlePacket : MonoBehaviour
     {
-        /*public static Packet Packet;
+        public static Packet Packet;
 
         private delegate void Packet_(byte[] data);
 
@@ -37,17 +37,17 @@ namespace DefaultNamespace.TcpClients
 
             if (Packet == null) Packet = new Packet();
             
-            Packet.Write(buffer);
+            Packet.WriteByte(buffer);
 
-            if (Packet.Buffer.Count == 0)
+            if (Packet.Count() == 0)
             {
                 Packet.Clear();
                 return;
             }
             
-            if (Packet.Buffer.Count >= 8)
+            if (Packet.Length() >= 8)
             {
-                _lenght = Packet.Read<long>(false);
+                _lenght = Packet.ReadLong(false);
                 if (_lenght <= 0)
                 {
                     Packet.Clear();
@@ -55,16 +55,20 @@ namespace DefaultNamespace.TcpClients
                 }
             }
 
-            while (_lenght > 0 & _lenght <= Packet.Buffer.Count - 8)
+            while (_lenght > 0 & _lenght <= Packet.Length() - 8)
             {
-                Packet.Read<long>();
-                data = Packet.Read((int)_lenght);
-                HandleDataPacket(data);
+                if (_lenght <= Packet.Length() - 8)
+                {
+                    Packet.ReadLong();
+                    data = Packet.ReadByte((int)_lenght);
+                    HandleDataPacket(data);
+                    
+                }
                 _lenght = 0;
 
-                if (Packet.Buffer.Count >= 8)
+                if (Packet.Length() >= 8)
                 {
-                    _lenght = Packet.Read<long>(false);
+                    _lenght = Packet.ReadLong(false);
                     if (_lenght < 0)
                     {
                         Packet.Clear();
@@ -75,16 +79,17 @@ namespace DefaultNamespace.TcpClients
             
         }
 
-        private static void HandleDataPacket(byte[] data)
+        private static void HandleDataPacket(byte[] data) //
         {
-            Packet_ packetHandler;
+            long packetIdentifier;
             var packet = new Packet();
-            packet.Write(data);
+            Packet_ packetHandler;
             
+            packet.WriteByte(data);
+            packetIdentifier = packet.ReadLong();
             packet.Dispose();
             
-
-            if (packets.TryGetValue(packet.Read<long>(), out packetHandler))
+            if (packets.TryGetValue(packetIdentifier, out packetHandler))
             {
                  packetHandler.Invoke(data);
             }
@@ -93,18 +98,20 @@ namespace DefaultNamespace.TcpClients
         private static void PacketInformation(byte[] data)
         {
             Packet packet = new Packet();
-            packet.Write(data);
+            packet.WriteByte(data);
 
-            var packetIdentifier = packet.Read<long>();
-            var m1 = packet.Read<string>();
-            var m2 = packet.Read<string>();
-            var lvl = packet.Read<int>();
+            var packetIdentifier = packet.ReadLong();
+           var m1 = packet.ReadString();
+          var m2 = packet.ReadString();
+           var lvl = packet.ReadInt();
+            
             
             Debug.Log(m1);
             Debug.Log(m2);
             Debug.Log(lvl);
-
-        }*/
+            
+            
+        }
 
     }
 }

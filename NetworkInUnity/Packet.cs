@@ -7,9 +7,9 @@ public class Packet : IDisposable
 {
     public List<byte> Buffer { get; } = new List<byte>(); 
     
-    private byte[]? _readBuffer;
-    private int _readPos;
-    private bool _buffUpdated;
+    public byte[]? _readBuffer;
+    public int _readPos;
+    public bool _buffUpdated;
     
     
     public int Length() => Buffer.Count - _readPos;
@@ -35,35 +35,35 @@ public class Packet : IDisposable
         _buffUpdated = true;
     }
     
-    private void WriteShort(short value)
+    public void WriteShort(short value)
     {
         Console.WriteLine("Short");
         Buffer.AddRange(BitConverter.GetBytes(value));
         _buffUpdated = true;
     }
 
-    private void WriteInt(int value)
+    public void WriteInt(int value)
     {
         Console.WriteLine("Int");
         Buffer.AddRange(BitConverter.GetBytes(value));
         _buffUpdated = true;
     }
 
-    private void WriteLong(long value)
+    public void WriteLong(long value)
     {
         Console.WriteLine("Long");
         Buffer.AddRange(BitConverter.GetBytes(value));
         _buffUpdated = true;
     }
 
-    private void WriteFloat(float value)
+    public void WriteFloat(float value)
     {
         Console.WriteLine("Float");
         Buffer.AddRange(BitConverter.GetBytes(value));
         _buffUpdated = true;
     }
 
-    private void WriteString(string value)
+    public void WriteString(string value)
     {
         Console.WriteLine("String");
         Buffer.AddRange(BitConverter.GetBytes(value.Length));
@@ -92,7 +92,7 @@ public class Packet : IDisposable
 
     }
     
-    private short ReadShort(bool peek = true)
+    public short ReadShort(bool peek = true)
     {
         if (Buffer.Count > _readPos)
         {
@@ -102,16 +102,16 @@ public class Packet : IDisposable
                 _buffUpdated = false;
             }
 
-            var ret = BitConverter.ToInt16(_readBuffer!, _readPos);
+            var ret = BitConverter.ToInt16(_readBuffer, _readPos);
             if (peek & Buffer.Count > _readPos)
                 _readPos += 2;
             return ret;
         }
         else
-            throw new Exception("Byte buffer is exceed!");
+            throw new Exception("Byte buffer is exceed");
     }
 
-    private int ReadInt(bool peek = true)
+    public int ReadInt(bool peek = true)
     {
         if (Buffer.Count > _readPos)
         {
@@ -121,16 +121,16 @@ public class Packet : IDisposable
                 _buffUpdated = false;
             }
 
-            var ret = BitConverter.ToInt32(_readBuffer!, _readPos);
+            var ret = BitConverter.ToInt32(_readBuffer, _readPos);
             if (peek & Buffer.Count > _readPos)
                 _readPos += 4;
             return ret;
         }
         else
-            throw new Exception("Byte buffer is exceed!");
+            throw new Exception("Byte buffer is exceed");
     }
 
-    private long ReadLong(bool peek = true)
+    public long ReadLong(bool peek = true)
     {
         if (Buffer.Count > _readPos)
         {
@@ -140,16 +140,16 @@ public class Packet : IDisposable
                 _buffUpdated = false;
             }
 
-            var ret = BitConverter.ToInt64(_readBuffer!, _readPos);
+            var ret = BitConverter.ToInt64(_readBuffer, _readPos);
             if (peek & Buffer.Count > _readPos)
                 _readPos += 8;
             return ret;
         }
         else
-            throw new Exception("Byte buffer is exceed!");
+            throw new Exception("Byte buffer is exceed");
     }
 
-    private float ReadFloat(bool peek = true)
+    public float ReadFloat(bool peek = true)
     {
         if (Buffer.Count > _readPos)
         {
@@ -159,16 +159,16 @@ public class Packet : IDisposable
                 _buffUpdated = false;
             }
 
-            var ret = BitConverter.ToSingle(_readBuffer!, _readPos);
+            var ret = BitConverter.ToSingle(_readBuffer, _readPos);
             if (peek & Buffer.Count > _readPos)
                 _readPos += 4;
             return ret;
         }
         else
-            throw new Exception("Byte buffer is exceed!");
+            throw new Exception("Byte buffer is exceed");
     }
 
-    private string ReadString(bool peek = true)
+    public string ReadString(bool peek = true)
     {
         var length = ReadInt(true);
         if (_buffUpdated)
@@ -176,7 +176,7 @@ public class Packet : IDisposable
             _readBuffer = Buffer.ToArray();
             _buffUpdated = false;
         }
-        var retString = Encoding.ASCII.GetString(_readBuffer!, _readPos, length);
+        var retString = Encoding.ASCII.GetString(_readBuffer, _readPos, length);
         if ((peek & Buffer.Count > _readPos) && retString.Length > 0)
             _readPos += length;
                 
@@ -187,10 +187,10 @@ public class Packet : IDisposable
 
     #region Dispose
 
-    private bool _disposedValue;
+    public bool _disposedValue;
     protected virtual void Dispose(bool disposing)
     {
-        if (!_disposedValue)
+        if (_disposedValue)
         {
             if(disposing)
                 Buffer.Clear();
