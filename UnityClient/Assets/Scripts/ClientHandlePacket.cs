@@ -9,6 +9,7 @@ namespace DefaultNamespace.TcpClients
     {
         Information = 1,
         ExecutionClient,
+        PlayerData
     }
 
     public enum ClientPacketTypes
@@ -19,7 +20,8 @@ namespace DefaultNamespace.TcpClients
     public class ClientHandlePacket : MonoBehaviour
     {
         public static Packet Packet;
-
+        public GameObject player;
+        public static Dictionary<int, GameObject> playerList = new Dictionary<int, GameObject>();
         private delegate void Packet_(byte[] data);
 
         private static Dictionary<long, Packet_> packets;
@@ -30,11 +32,12 @@ namespace DefaultNamespace.TcpClients
             InitializePacket();
         }
 
-        private static void InitializePacket()
+        private void InitializePacket()
         {
             packets = new Dictionary<long, Packet_>();
             packets.Add((long)PacketTypes.Information,PacketInformation);
             packets.Add((long)PacketTypes.ExecutionClient,PacketExecution);
+            packets.Add((long)PacketTypes.PlayerData,PacketPlayerData);
         }
 
 
@@ -125,6 +128,22 @@ namespace DefaultNamespace.TcpClients
         {
             Debug.Log("Executed from the server!");
         }
+        private void PacketPlayerData(byte[] data)
+        {
+            Packet packet = new Packet();
+            packet.WriteByte(data);
+
+            var packetIdentifier = packet.ReadLong();
+            var id = packet.ReadInt();
+
+            GameObject NewPlayer = player;
+            NewPlayer.name = "Player: " + id;
+            playerList.Add(id,NewPlayer);
+
+            Instantiate(playerList[id]);
+
+        }
+
 
     }
 }

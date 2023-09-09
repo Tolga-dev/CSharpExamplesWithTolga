@@ -52,7 +52,6 @@ namespace DefaultNamespace.TcpClients
             buffer = new byte[8192];
             Debug.Log("Starting");
             
-            
             try
             {
                 client.BeginConnect(IP_ADDRESS, PORT, new AsyncCallback(ConnectCallBack), client);
@@ -106,6 +105,7 @@ namespace DefaultNamespace.TcpClients
                 if (lenght == 0)
                 {
                     Debug.Log("Disconnected");
+                    Disconnection();
                     Application.Quit();
                     return;  
                 }
@@ -118,6 +118,7 @@ namespace DefaultNamespace.TcpClients
             catch (Exception e)
             {
                 Debug.Log("Disconnected");
+                Disconnection();
                 Console.WriteLine(e);
                 throw;
             }
@@ -138,6 +139,13 @@ namespace DefaultNamespace.TcpClients
             packet.WriteString("Thanx");
             SendData(packet.ToArray());
             Debug.Log("Information is Sent");
+        }
+
+        public void Disconnection()
+        {
+            client.Close();
+            client = null;
+        
         }
 
         
