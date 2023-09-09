@@ -42,14 +42,14 @@ public class TcpServer
                 Clients[i].ip = tcpClient.Client.RemoteEndPoint.ToString();
                 Clients[i].Start();
                 Console.WriteLine("Connected! " + Clients[i].ip);
-                SendInformation(Clients[i].id);
+              //  SendInformation(Clients[i].id);
                 return;
             }
             
         }
     }
 
-    public void SendInformation(int id)
+    /*public void SendInformation(int id)
     {
         Packet packet = new Packet();
         
@@ -57,11 +57,11 @@ public class TcpServer
         packet.Write<string>("Welcome");
         packet.Write<string>("Play now!");
         packet.Write<int>(10);
-        
         SendDataTo(id,packet.Buffer.ToArray());
 
-    }
+    }*/
 
+    /*
     public void SendExecutionMethodToClient(int id)
     {
         Packet packet = new Packet();
@@ -69,13 +69,19 @@ public class TcpServer
         SendDataTo(id,packet.Buffer.ToArray());
         
     }
+    
     public void SendDataTo(int id, byte[] data)
     {
         Packet packet = new Packet();
         packet.Write<long>(
             (data.GetUpperBound(0) - data.GetLowerBound(0))
                 + 1);
+        packet.Write(data);
+        Clients[id].Stream.BeginWrite(packet.Buffer.ToArray(), 0, packet.Buffer.ToArray().Length,
+            null, null);
+        
     }
+    */
 
 
 

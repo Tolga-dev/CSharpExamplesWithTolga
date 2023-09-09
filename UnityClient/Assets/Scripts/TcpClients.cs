@@ -8,7 +8,6 @@ namespace DefaultNamespace.TcpClients
 {
     public class TcpClients: MonoBehaviour
     {
-        public static TcpClients instance;
         
         public TcpClient client;
         public NetworkStream Stream;
@@ -21,31 +20,25 @@ namespace DefaultNamespace.TcpClients
         
         private string IP_ADDRESS = "127.0.0.1";
         private int PORT = 5555;
-
-        private void Awake()
-        {
-            if (instance == null)
-                instance = this;
-            else 
-                Destroy(instance);
-        }
-
-        private void Update()
+        
+        /*private void Update()
         {
             if (handleData == true)
             {
+                Debug.Log("Handling Data");
                 ClientHandlePacket.HandleData(receivedBytes);
                 handleData = false;
             }
-        }
+        }*/
 
         public void Connect()
         {
             client = new TcpClient();
             client.ReceiveBufferSize = bufferSize;
             client.SendBufferSize = bufferSize;
-            buffer = new byte[bufferSize];
+            buffer = new byte[8192];
             Debug.Log("Starting");
+            
             
             try
             {
@@ -60,6 +53,7 @@ namespace DefaultNamespace.TcpClients
 
         private void ConnectCallBack(IAsyncResult result)
         {
+            Debug.Log("Connecting!");
             try
             {
                 client.EndConnect(result);
@@ -70,10 +64,11 @@ namespace DefaultNamespace.TcpClients
                 }
                 else
                 {
-                    Stream = client.GetStream();
-                    Stream.BeginRead(buffer, 0, 8192, OnReceiveData, null);
                     isConnected = true;
                     Debug.Log("Entered!");
+                    Stream = client.GetStream();
+                    Debug.Log("Reading!");
+                  //  Stream.BeginRead(buffer, 0, 8192, OnReceiveData, null);
                 }
             }
             catch (Exception e)
@@ -85,13 +80,15 @@ namespace DefaultNamespace.TcpClients
         }
 
         private void OnReceiveData(IAsyncResult result)
-        {
+        {   
             try
             {
                 
                 var lenght = Stream.EndRead(result);
-                Debug.Log(lenght);
-                var receivedBytes = new byte[lenght];
+                Debug.Log("Data Reading!  " + lenght);
+
+                receivedBytes = new byte[lenght];
+                
                 Buffer.BlockCopy(buffer,0,receivedBytes,0,lenght);
 
                 if (lenght == 0)
@@ -103,7 +100,7 @@ namespace DefaultNamespace.TcpClients
 
                 handleData = true;
                 Debug.Log("Data Received");
-                Stream.BeginRead(buffer, 0, bufferSize, OnReceiveData, null);
+                Stream.BeginRead(buffer, 0, 8192, OnReceiveData, null);
 
             }
             catch (Exception e)

@@ -12,11 +12,11 @@ namespace DefaultNamespace.TcpClients
     }
     public class ClientHandlePacket : MonoBehaviour
     {
-        public static Packet Packet = new Packet();
+        /*public static Packet Packet;
 
-        private delegate void PacketHandler(byte[] data);
+        private delegate void Packet_(byte[] data);
 
-        private static Dictionary<long, PacketHandler> _packetHandlersDic;
+        private static Dictionary<long, Packet_> packets;
         private static long _lenght;
 
         private void Awake()
@@ -26,14 +26,16 @@ namespace DefaultNamespace.TcpClients
 
         private static void InitializePacket()
         {
-            _packetHandlersDic = new FlexibleDictionary<long, PacketHandler>();
-            _packetHandlersDic.Add((long)PacketTypes.Information,PacketInformation);
+            packets = new Dictionary<long, Packet_>();
+            packets.Add((long)PacketTypes.Information,PacketInformation);
         }
 
 
         public static void HandleData(byte[] data)
         {
             var buffer = (byte[])data.Clone();
+
+            if (Packet == null) Packet = new Packet();
             
             Packet.Write(buffer);
 
@@ -42,7 +44,8 @@ namespace DefaultNamespace.TcpClients
                 Packet.Clear();
                 return;
             }
-            else if (Packet.Buffer.Count >= 8)
+            
+            if (Packet.Buffer.Count >= 8)
             {
                 _lenght = Packet.Read<long>(false);
                 if (_lenght <= 0)
@@ -74,13 +77,14 @@ namespace DefaultNamespace.TcpClients
 
         private static void HandleDataPacket(byte[] data)
         {
-            PacketHandler packetHandler;
+            Packet_ packetHandler;
             var packet = new Packet();
             packet.Write(data);
             
             packet.Dispose();
+            
 
-            if (_packetHandlersDic.TryGetValue(packet.Read<long>(), out packetHandler))
+            if (packets.TryGetValue(packet.Read<long>(), out packetHandler))
             {
                  packetHandler.Invoke(data);
             }
@@ -100,7 +104,7 @@ namespace DefaultNamespace.TcpClients
             Debug.Log(m2);
             Debug.Log(lvl);
 
-        }
+        }*/
 
     }
 }

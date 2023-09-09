@@ -9,7 +9,7 @@ namespace DefaultNamespace.TcpClients
         private TcpClients client;
         private void Start()
         {
-            client = TcpClients.instance;
+            client = GetComponent<TcpClients>();
             Debug.Log("Connecting");
             client.Connect();
         }

@@ -11,50 +11,64 @@ public class Packet : IDisposable
     private int _readPos;
     private bool _buffUpdated;
     
+    
     public int Length() => Buffer.Count - _readPos;
+    
     public void Clear()
     {
         Buffer.Clear();
         _readPos = 0;
     }
 
+    public byte[] ToArray() => Buffer.ToArray();
+
+    public int Count()
+    {
+        return Buffer.Count;
+    }
+    
     #region Writing
 
-    public void Write(byte[] input)
+    public void WriteByte(byte[] input)
     {
         Buffer.AddRange(input);
         _buffUpdated = true;
-    } 
+    }
     
-    public void Write<T>(T input)
+    private void WriteShort(short value)
     {
-        switch (Type.GetTypeCode(typeof(T)))
-        {
-            case TypeCode.Int16: // short
-                Console.WriteLine("Short sent");
-                Buffer.AddRange(BitConverter.GetBytes((short)(object)input!));
-                break;
-            case TypeCode.Int32: // integer
-                Console.WriteLine("Int sent");
-                Buffer.AddRange(BitConverter.GetBytes((int)(object)input!));
-                break;
-            case TypeCode.Int64: // long
-                Console.WriteLine("long sent");
-                Buffer.AddRange(BitConverter.GetBytes((long)(object)input!));
-                break;
-            case TypeCode.Single: // float
-                Console.WriteLine("float sent");
-                Buffer.AddRange(BitConverter.GetBytes((float)(object)input!));
-                break;
-            case TypeCode.String:
-                Console.WriteLine("string sent");
-                var chars = (string)(object)input!;
-                Buffer.AddRange(BitConverter.GetBytes(chars.Length));
-                Buffer.AddRange(Encoding.ASCII.GetBytes(chars));
-                break;
-        }
+        Console.WriteLine("Short");
+        Buffer.AddRange(BitConverter.GetBytes(value));
         _buffUpdated = true;
+    }
 
+    private void WriteInt(int value)
+    {
+        Console.WriteLine("Int");
+        Buffer.AddRange(BitConverter.GetBytes(value));
+        _buffUpdated = true;
+    }
+
+    private void WriteLong(long value)
+    {
+        Console.WriteLine("Long");
+        Buffer.AddRange(BitConverter.GetBytes(value));
+        _buffUpdated = true;
+    }
+
+    private void WriteFloat(float value)
+    {
+        Console.WriteLine("Float");
+        Buffer.AddRange(BitConverter.GetBytes(value));
+        _buffUpdated = true;
+    }
+
+    private void WriteString(string value)
+    {
+        Console.WriteLine("String");
+        Buffer.AddRange(BitConverter.GetBytes(value.Length));
+        Buffer.AddRange(Encoding.ASCII.GetBytes(value));
+        _buffUpdated = true;
     }
     
     #endregion
@@ -62,7 +76,7 @@ public class Packet : IDisposable
     #region Read
 
     
-    public byte[] Read(int length, bool peek = true)
+    public byte[] ReadByte(int length, bool peek = true)
     {
         if (_buffUpdated)
         {
@@ -77,95 +91,96 @@ public class Packet : IDisposable
         return ret;
 
     }
-
     
-    public T? Read<T>(bool peek = true)
+    private short ReadShort(bool peek = true)
     {
-        switch (Type.GetTypeCode(typeof(T)))
+        if (Buffer.Count > _readPos)
         {
-            case TypeCode.Int32: // integer 
-                if (Buffer.Count > _readPos)
-                {
-                    if (_buffUpdated)
-                    {
-                        _readBuffer = Buffer.ToArray();
-                        _buffUpdated = false;
-                    }
+            if (_buffUpdated)
+            {
+                _readBuffer = Buffer.ToArray();
+                _buffUpdated = false;
+            }
 
-                    var ret = BitConverter.ToInt32(_readBuffer!, _readPos);
-                    if (peek & Buffer.Count > _readPos)
-                        _readPos += sizeof(int);
-                    return (T)(object)ret;
-                }
-                else
-                    throw new Exception("Byte buffer is exceed!");
-                
-            case TypeCode.Int16: // short 
-                if (Buffer.Count > _readPos)
-                {
-                    if (_buffUpdated)
-                    {
-                        _readBuffer = Buffer.ToArray();
-                        _buffUpdated = false;
-                    }
-
-                    var ret = BitConverter.ToInt16(_readBuffer!, _readPos);
-                    if (peek & Buffer.Count > _readPos)
-                        _readPos += sizeof(short);
-                    return (T)(object)ret;
-                }
-                else
-                    throw new Exception("Byte buffer is exceed!");
-                
-            case TypeCode.Single: // float 
-                if (Buffer.Count > _readPos)
-                {
-                    if (_buffUpdated)
-                    {
-                        _readBuffer = Buffer.ToArray();
-                        _buffUpdated = false;
-                    }
-
-                    var ret = BitConverter.ToSingle(_readBuffer!, _readPos);
-                    if (peek & Buffer.Count > _readPos)
-                        _readPos += sizeof(float);
-                    return (T)(object)ret;
-                }
-                else
-                    throw new Exception("Byte buffer is exceed!");
-                
-            case TypeCode.Int64: // long
-                if (Buffer.Count > _readPos)
-                {
-                    if (_buffUpdated)
-                    {
-                        _readBuffer = Buffer.ToArray();
-                        _buffUpdated = false;
-                    }
-
-                    var ret = BitConverter.ToInt64(_readBuffer!, _readPos);
-                    if (peek & Buffer.Count > _readPos)
-                        _readPos += sizeof(long);
-                    return (T)(object)ret;
-                }
-                else
-                    throw new Exception("Byte buffer is exceed!");
-
-            case TypeCode.String:
-                var length = Read<int>();
-                if (_buffUpdated)
-                {
-                    _readBuffer = Buffer.ToArray();
-                    _buffUpdated = false;
-                }
-                var retString = Encoding.ASCII.GetString(_readBuffer!, _readPos, length);
-                if ((peek & Buffer.Count > _readPos) && retString.Length > 0)
-                    _readPos += length;
-                
-                return (T)(object)retString;
+            var ret = BitConverter.ToInt16(_readBuffer!, _readPos);
+            if (peek & Buffer.Count > _readPos)
+                _readPos += 2;
+            return ret;
         }
+        else
+            throw new Exception("Byte buffer is exceed!");
+    }
 
-        return default(T);
+    private int ReadInt(bool peek = true)
+    {
+        if (Buffer.Count > _readPos)
+        {
+            if (_buffUpdated)
+            {
+                _readBuffer = Buffer.ToArray();
+                _buffUpdated = false;
+            }
+
+            var ret = BitConverter.ToInt32(_readBuffer!, _readPos);
+            if (peek & Buffer.Count > _readPos)
+                _readPos += 4;
+            return ret;
+        }
+        else
+            throw new Exception("Byte buffer is exceed!");
+    }
+
+    private long ReadLong(bool peek = true)
+    {
+        if (Buffer.Count > _readPos)
+        {
+            if (_buffUpdated)
+            {
+                _readBuffer = Buffer.ToArray();
+                _buffUpdated = false;
+            }
+
+            var ret = BitConverter.ToInt64(_readBuffer!, _readPos);
+            if (peek & Buffer.Count > _readPos)
+                _readPos += 8;
+            return ret;
+        }
+        else
+            throw new Exception("Byte buffer is exceed!");
+    }
+
+    private float ReadFloat(bool peek = true)
+    {
+        if (Buffer.Count > _readPos)
+        {
+            if (_buffUpdated)
+            {
+                _readBuffer = Buffer.ToArray();
+                _buffUpdated = false;
+            }
+
+            var ret = BitConverter.ToSingle(_readBuffer!, _readPos);
+            if (peek & Buffer.Count > _readPos)
+                _readPos += 4;
+            return ret;
+        }
+        else
+            throw new Exception("Byte buffer is exceed!");
+    }
+
+    private string ReadString(bool peek = true)
+    {
+        var length = ReadInt(true);
+        if (_buffUpdated)
+        {
+            _readBuffer = Buffer.ToArray();
+            _buffUpdated = false;
+        }
+        var retString = Encoding.ASCII.GetString(_readBuffer!, _readPos, length);
+        if ((peek & Buffer.Count > _readPos) && retString.Length > 0)
+            _readPos += length;
+                
+        return retString;
     }
 
     #endregion
@@ -193,6 +208,5 @@ public class Packet : IDisposable
     
 
     #endregion
-    
     
 }

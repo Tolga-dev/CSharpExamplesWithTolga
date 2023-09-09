@@ -15,8 +15,8 @@ public class Clients
         socket.SendBufferSize = bufferSize;
         socket.ReceiveBufferSize = bufferSize;
         Stream = socket.GetStream();
-        readBuffer = new byte[bufferSize];
-        Stream.BeginRead(readBuffer, 0, readBuffer.Length, ReceivedDataCallBack, null);
+        readBuffer = new byte[bufferSize*2];
+        Stream.BeginRead(readBuffer, 0, socket.ReceiveBufferSize, ReceivedDataCallBack, null);
 
     }
 
