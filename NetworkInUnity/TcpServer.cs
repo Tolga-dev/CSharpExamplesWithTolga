@@ -6,7 +6,8 @@ namespace NetworkInUnity;
 public enum PacketTypes
 {
     Information = 1,
-    ExecutionClient
+    ExecutionClient,
+    PlayerData
 }
 public enum ClientPacketTypes
 {
@@ -46,7 +47,8 @@ public class TcpServer
                 Clients[i].ip = tcpClient.Client.RemoteEndPoint.ToString();
                 Clients[i].Start();
                 Console.WriteLine("Connected! " + Clients[i].ip);
-                SendInformation(Clients[i].id);
+                //SendInformation(Clients[i].id);
+                SendJoinGame(i);
                 return;
             }
             
@@ -73,6 +75,16 @@ public class TcpServer
         packet.WriteLong((long)PacketTypes.ExecutionClient);
         SendDataTo(id,packet.ToArray());
     }
+
+    public void SendDataToAll(byte[] data)
+    {
+        for (int i = 0; i < Clients.Length; i++)
+        {
+            if(Clients[i].socket != null)
+                SendDataTo(i,data);
+        }
+        
+    }
     
     public void SendDataTo(int id, byte[] data)//
     {
@@ -81,8 +93,31 @@ public class TcpServer
         packet.WriteByte(data);
         Clients[id].Stream.BeginWrite(packet.ToArray(), 0, packet.ToArray().Length,
             null, null);
-        
     }
-    
+
+    public byte[] PlayerData(int id)
+    {
+        Packet packet = new Packet();
+        packet.WriteLong((long)PacketTypes.PlayerData);
+        packet.WriteInt(id);
+        return packet.ToArray();
+    }
+
+    public void SendJoinGame(int id)
+    {
+        Packet packet = new Packet();
+
+        for (int i = 0; i < Clients.Length; i++)
+        {
+            if (Clients[i].socket != null)
+            {
+                if (i != id)
+                {
+                    SendDataTo(id,PlayerData(i));
+                }
+            }
+        }
+        SendDataToAll(PlayerData(id));
+    }
     
 }
