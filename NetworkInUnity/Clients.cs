@@ -48,5 +48,6 @@ public class Clients
     {
         Console.WriteLine("{0} got terminated", ip);
         socket.Close();
+        socket = null;
     }
 }
