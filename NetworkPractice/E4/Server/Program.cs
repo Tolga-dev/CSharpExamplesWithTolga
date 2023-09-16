@@ -15,8 +15,7 @@ public class TcpServer
     public static void Runner()
     {
         Start();
-         
-
+        
         while (true)
         {
             var message = Console.ReadLine();
@@ -42,7 +41,7 @@ public class TcpServer
             {
                 connectedClients.Add(client);
             }
-
+        
             Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClient));
             clientThread.Start(client);
         }
