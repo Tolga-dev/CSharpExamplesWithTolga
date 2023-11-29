@@ -5,10 +5,12 @@ using System.Runtime.InteropServices;
 using Delegates.E0;
 using Delegates.E1;
 
+
 namespace Delegates
 {
     namespace E0
     {
+        
         public class Delegate
         {
             private delegate void DelegateFunction(int a);
@@ -34,7 +36,6 @@ namespace Delegates
             }
             
         }
-        
     }
     namespace E1
     {
@@ -154,8 +155,196 @@ namespace Delegates
         }
         
     }
+    namespace E5
+    {
+        public delegate void PlayerAction();
+        
+        public class Delegate
+        {
+            
+            public event PlayerAction onDefence;
+            public event PlayerAction onAttack;
+            
+            private void Defence()
+            {
+                Console.WriteLine("defence");
+                onDefence?.Invoke();
+            }
+
+            private void Attack()
+            {
+                Console.WriteLine("attack");
+                onAttack?.Invoke();   
+            }
+            
+            public void Runner()
+            {
+                void attack() => Console.WriteLine("Play ATTACK sound");
+                void defence() => Console.WriteLine("Play Defence sound");
+
+                onDefence += defence;
+                onAttack += attack;
+                
+                Defence();
+                Attack();
+                onAttack -= attack;
+                Attack();
+            }
+            
+        }
+    }
+    namespace E4
+    {
+        public delegate void PlayerOnMagicAction();
+
+        public class Delegate
+        {
+
+            public event PlayerOnMagicAction onMagic;
+            private int _health = 100;
+
+            private void OnMagic()
+            {
+                Console.WriteLine("On Magic");
+
+                onMagic?.Invoke();
+            }
+
+            private void healthDarkMagic(int a)
+            {
+                Console.WriteLine("Get dark life");
+                _health -= a;
+
+            }
+
+            private void healthBoostMagic(int a)
+            {
+                Console.WriteLine("Get extra life");
+                _health += a;
+            }
+
+
+            public void Runner()
+            {
+                Console.WriteLine(_health);
+                PlayerOnMagicAction darkAction = delegate { healthDarkMagic(10); };
+                PlayerOnMagicAction boostAction = delegate { healthBoostMagic(10); };
+
+                onMagic += darkAction;
+                OnMagic();
+                onMagic -= darkAction;
+                OnMagic();
+                onMagic += boostAction;
+                OnMagic();
+                onMagic -= boostAction;
+                OnMagic();
+            }
+
+        }
+    }
+    namespace E6
+    {
+        public interface IStat
+        {
+            public int health { get; set;}
+            int GetHealth();
+        }
+        public class Player : IStat
+        {
+            public int health { get; set; }
+
+            public int GetHealth()
+            {
+                return health;
+            }
+        }
+
+        public class Enemy : IStat
+        {
+            public int health { get; set; }
+
+            public int GetHealth()
+            {
+                return health;
+            }
+        }
+        
+        public delegate void PlayerOnMagicAction(IStat entity, int a);
+
+        public class Delegate // action specific classtaki can i azalticak, ve eventle yazdiralacak
+        {
+            public event PlayerOnMagicAction healthEvent;
+
+            public void HealthController(IStat stat, int i)
+            {
+                healthEvent?.Invoke(stat, i);
+            }
+            
+            public void Runner()
+            {
+                IStat player = new Player();
+                IStat enemy = new Enemy();
+
+                PlayerOnMagicAction darkAction = (IStat entity, int a) =>
+                {
+                    entity.health -= a;
+                    Console.WriteLine("{0}, {1}", entity, a);
+                };
+
+                healthEvent += darkAction;
+
+                HealthController(player, 10);
+                HealthController(enemy, 10);
+
+                healthEvent -= darkAction;
+                
+                HealthController(player, 10);
+                HealthController(enemy, 10);
+                
+            }
+
+        }
+        
+        public class Delegate2  
+        {
+            public event Action<IStat, int> scoreUpdatedEntity;
+
+            private void UpdateScore(IStat entity, int Score)
+            {
+                entity.health += Score;
+                scoreUpdatedEntity?.Invoke(entity, Score);
+            }
+            private void OnScoreUpdated(IStat entity, int newScore)
+            {
+                Console.WriteLine($"UI: {entity}'s score updated to {newScore}");
+            }
+
+            public void Runner()
+            {
+                IStat player = new Player();
+                IStat enemy = new Enemy();
+                
+                scoreUpdatedEntity += OnScoreUpdated;
+                
+                UpdateScore(player,10);
+                UpdateScore(player,10);
+                UpdateScore(enemy,10);
+
+                scoreUpdatedEntity -= OnScoreUpdated;
+                UpdateScore(enemy,10);
+
+
+
+            }
+            
+            
+
+        }
+
+    }
     
-    
+
+
 }
 
 
@@ -167,7 +356,7 @@ public class Program
         
 //        Delegates.E2.Delegate m = new Delegates.E2.Delegate();
 //        m.Runner();
-        Delegates.E0.Delegate m = new Delegates.E0.Delegate();
+        Delegates.E6.Delegate2 m = new Delegates.E6.Delegate2();
         m.Runner();
 
     }
