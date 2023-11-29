@@ -25,8 +25,7 @@
 [Oo]bj/
 _UpgradeReport_Files/
 [Pp]ackages/
-**/obj/
-
 Thumbs.db
 Desktop.ini
 .DS_Store
+ignoreme.txt 

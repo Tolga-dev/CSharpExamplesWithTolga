@@ -90,6 +90,36 @@ namespace AsynchronousPractice
         }
 
     }
+    
+    internal class Asynchronous3
+    {
+        private void Function()
+        {
+            Console.WriteLine("thread 1");
+        }
+        private void Function2()
+        {
+            Console.WriteLine("thread 2");
+        }
+
+        public void Runner()
+        {
+            Thread thread = new Thread(new ThreadStart(Function));
+            Thread thread2 = new Thread(new ThreadStart(Function2));
+
+            thread.Start();
+            thread2.Start();
+        }
+
+        public async Task Runner2()
+        {
+            await Task.Run(Function2);
+            await Task.Run(Function);
+
+        }
+
+    }
+    
 }
 
 namespace RealTimeExample
@@ -126,9 +156,10 @@ public class Program
 {
     static void Main(string[] args)
     {
-         
-        var generator = new RealTimeExample.Asynchronous1();
-        generator.Runner();
+
+        var generator = new AsynchronousPractice.Asynchronous3();
+        generator.Runner2();
+        
 
     }
 }

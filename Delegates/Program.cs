@@ -332,9 +332,6 @@ namespace Delegates
 
                 scoreUpdatedEntity -= OnScoreUpdated;
                 UpdateScore(enemy,10);
-
-
-
             }
             
             
@@ -342,7 +339,18 @@ namespace Delegates
         }
 
     }
-    
+    namespace E7
+    {
+        public class Delegate
+        {
+            public void Runner()
+            {
+                
+                 
+            }
+
+        }
+    }
 
 
 }
