@@ -16,7 +16,8 @@
 **/.idea/**/*.iml
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
-    
+*.json
+*.cache
 *.suo
 *.user
 .vs/
@@ -24,6 +25,7 @@
 [Oo]bj/
 _UpgradeReport_Files/
 [Pp]ackages/
+**/obj/
 
 Thumbs.db
 Desktop.ini

@@ -8,7 +8,6 @@ public class FtpServer
     {
 	    var server = new Server();
 	    server.Start();
-	     
     }
     
 }

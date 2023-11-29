@@ -33,7 +33,7 @@ namespace Statements
     {
         internal class Ite
         {
-            void Iteration<T>( List<T> l)
+            private static void Iteration<T>( List<T> l)
             {
                 for (int i = 0; i < 3; i++) // for
                     Console.Write(i);
@@ -59,7 +59,7 @@ namespace Statements
             {
                 var f = new List<int>() { 0, 1, 2, 3, 4 };
                 var f2 = new List<char>() {'f','m','s'};
-                Iteration<int>(f);
+                Iteration(f);
                 
             }
             
@@ -110,10 +110,6 @@ namespace Statements
                     Console.WriteLine(e); // error in an overflow.
                     throw;
                 }
-                
-
-
-
             }
 
             public void Runner()
@@ -121,7 +117,6 @@ namespace Statements
                 int[] h = new[] { 1, 2, 3 };
                 
                 Foo(h);
-                
                 
             }
         }
@@ -138,6 +133,7 @@ namespace Statements
                 {
                     _unsafeData += 1;                    
                 }
+                
                 lock (_data_block)
                 {
                     for (int i = 0; i < 100; i++)
