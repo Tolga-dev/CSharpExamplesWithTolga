@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop", "oop\oop.csproj", "{2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{11E3AC83-1FED-4D77-BCA9-D699CF66A2CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParallelProgramming", "ParallelProgramming\ParallelProgramming.csproj", "{40CCF823-78FE-47BF-8088-175D24D07499}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,10 @@ Global
 		{11E3AC83-1FED-4D77-BCA9-D699CF66A2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E3AC83-1FED-4D77-BCA9-D699CF66A2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E3AC83-1FED-4D77-BCA9-D699CF66A2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CCF823-78FE-47BF-8088-175D24D07499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CCF823-78FE-47BF-8088-175D24D07499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CCF823-78FE-47BF-8088-175D24D07499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CCF823-78FE-47BF-8088-175D24D07499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E6CCF6FE-E1E5-4449-B841-FCC99CB50D89} = {A7BF521C-29D0-413E-B200-1B9EE237067A}
